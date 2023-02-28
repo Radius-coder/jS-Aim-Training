@@ -20,7 +20,6 @@ A mode where squares randomly spawn and dissapear and a countdown and points for
 
 Change squares to images.
 
-##Changelog
-
-###Version 1.0
+## Changelog
+### Version 1.0
 Initial commit of game
