@@ -5,7 +5,7 @@ A simple javascript game that tests how quick a user can mouse over several squa
 
 Game screen:
 
-![image](https://user-images.githubusercontent.com/67561957/221831867-39a90a20-bcda-4d11-b122-30592d86bc44.png)
+![image](https://user-images.githubusercontent.com/67561957/221859197-3126641d-bb6f-4bf0-91bb-c6a413026915.png)
 
 Endgame screen:
 
