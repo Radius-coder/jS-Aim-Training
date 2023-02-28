@@ -1,46 +1,109 @@
 <html>
 <head>
 <style>
+ /*CSS VARIABLES that get changed*/
+ :root{
+	--numberX: 80px;
+	--numberY: 80px;
+	--number2X: 80px;
+	--number2Y: 80px;
+	--number3X: 80px;
+	--number3Y: 80px;
+	--number4X: 80px;
+	--number4Y: 80px;
+	--number5X: 80px;
+	--number5Y: 80px;
+	--number6X: 80px;
+	--number6Y: 80px;
+	--number7X: 80px;
+	--number7Y: 80px;
+	--number8X: 80px;
+	--number8Y: 80px;
+	--number9X: 80px;
+	--number9Y: 80px;
+}
+
+
  .sqr1{
 	position: absolute;
-	width: 40px;
-	height: 40px;
+	width: 45px;
+	height: 45px;
 	background-color: green;
 	font-size: 1.5em;
 	z-index: 1; /*Keeps square on top*/
  }
 
  .sqr2{
-	width: 80px;
-	height: 80px;
+	width: 40px;
+	height: 40px;
 	position: absolute;	
 	background-color: red;
-	left: 400px;
-	top: 400px;
+	left: var(--numberX);
+	top: var(--numberY);
  }
  .sqr3{
-	width: 80px;
-	height: 80px;
+	width: 40px;
+	height: 40px;
 	position: absolute;	
 	background-color: red;
-	left: 140px;
-	top: 178px;
+	left: var(--number2X);
+	top: var(--number2Y);
  }
  .sqr4{
-	width: 80px;
-	height: 80px;
+	width: 40px;
+	height: 40px;
 	position: absolute;	
 	background-color: red;
-	left: 430px;
-	top: 145px;
+	left: var(--number3X);
+	top: var(--number3Y);
  }
  .sqr5{
-	width: 80px;
-	height: 80px;
+	width: 40px;
+	height: 40px;
 	position: absolute;	
 	background-color: red;
-	left: 300px;
-	top: 235px;
+	left: var(--number4X);
+	top: var(--number4Y);
+ }
+ .sqr6{
+	width: 40px;
+	height: 40px;
+	position: absolute;	
+	background-color: red;
+	left: var(--number5X);
+	top: var(--number5Y);
+ }
+ .sqr7{
+	width: 40px;
+	height: 40px;
+	position: absolute;	
+	background-color: red;
+	left: var(--number6X);
+	top: var(--number6Y);
+ }
+ .sqr8{
+	width: 40px;
+	height: 40px;
+	position: absolute;	
+	background-color: red;
+	left: var(--number7X);
+	top: var(--number7Y);
+ }
+ .sqr9{
+	width: 40px;
+	height: 40px;
+	position: absolute;	
+	background-color: red;
+	left: var(--number8X);
+	top: var(--number8Y);
+ }
+ .sqr10{
+	width: 40px;
+	height: 40px;
+	position: absolute;	
+	background-color: red;
+	left: var(--number9X);
+	top: var(--number9Y);
  }
 </style>
 </head>
@@ -51,9 +114,58 @@
  <div class="sqr3"></div>
  <div class="sqr4"></div>
  <div class="sqr5"></div>
+ <div class="sqr6"></div>
+ <div class="sqr7"></div>
+ <div class="sqr8"></div>
+ <div class="sqr9"></div>
+ <div class="sqr10"></div>
 </body>
 
+
 <script>
+/*Generate random number to set the position of target*/
+var numX = Math.floor(Math.random() * 500);
+var numY = Math.floor(Math.random() * 500);
+var num2X = Math.floor(Math.random() * 500);
+var num2Y = Math.floor(Math.random() * 500);
+var num3X = Math.floor(Math.random() * 500);
+var num3Y = Math.floor(Math.random() * 500);
+var num4X = Math.floor(Math.random() * 500);
+var num4Y = Math.floor(Math.random() * 500);
+var num5X = Math.floor(Math.random() * 500);
+var num5Y = Math.floor(Math.random() * 500);
+var num6X = Math.floor(Math.random() * 500);
+var num6Y = Math.floor(Math.random() * 500);
+var num7X = Math.floor(Math.random() * 500);
+var num7Y = Math.floor(Math.random() * 500);
+var num8X = Math.floor(Math.random() * 500);
+var num8Y = Math.floor(Math.random() * 500);
+var num9X = Math.floor(Math.random() * 500);
+var num9Y = Math.floor(Math.random() * 500);
+
+var r = document.querySelector(':root');
+function randomNum(){
+	r.style.setProperty('--numberX', numX);
+	r.style.setProperty('--numberY', numY);
+	r.style.setProperty('--number2X', num2X);
+	r.style.setProperty('--number2Y', num2Y);
+	r.style.setProperty('--number3X', num3X);
+	r.style.setProperty('--number3Y', num3Y);
+	r.style.setProperty('--number4X', num4X);
+	r.style.setProperty('--number4Y', num4Y);
+	r.style.setProperty('--number5X', num5X);
+	r.style.setProperty('--number5Y', num5Y);
+	r.style.setProperty('--number6X', num6X);
+	r.style.setProperty('--number6Y', num6Y);
+	r.style.setProperty('--number7X', num7X);
+	r.style.setProperty('--number7Y', num7Y);
+	r.style.setProperty('--number8X', num8X);
+	r.style.setProperty('--number8Y', num8Y);
+	r.style.setProperty('--number9X', num9X);
+	r.style.setProperty('--number9Y', num9Y);
+}
+randomNum();
+
 var seconds = 0;
 var el = document.getElementById('seconds-counter');
 
@@ -79,6 +191,21 @@ function checkCollision(){
 
     let sqr5_posX = Number((getComputedStyle(sqr5).left).split("px")[0]) ;
     let sqr5_posY = Number((getComputedStyle(sqr5).top).split("px")[0]);
+
+    let sqr6_posX = Number((getComputedStyle(sqr6).left).split("px")[0]);
+    let sqr6_posY = Number((getComputedStyle(sqr6).top).split("px")[0]);
+
+    let sqr7_posX = Number((getComputedStyle(sqr7).left).split("px")[0]) ;
+    let sqr7_posY = Number((getComputedStyle(sqr7).top).split("px")[0]);
+
+    let sqr8_posX = Number((getComputedStyle(sqr8).left).split("px")[0]) ;
+    let sqr8_posY = Number((getComputedStyle(sqr8).top).split("px")[0]);
+	
+    let sqr9_posX = Number((getComputedStyle(sqr9).left).split("px")[0]) ;
+    let sqr9_posY = Number((getComputedStyle(sqr9).top).split("px")[0]);
+
+    let sqr10_posX = Number((getComputedStyle(sqr10).left).split("px")[0]) ;
+    let sqr10_posY = Number((getComputedStyle(sqr10).top).split("px")[0]);
 
     /*Collision between square 1 and 2*/
     let leftPos = sqr1_posX + sqr1_width > sqr2_posX - sqr2_width;
@@ -133,10 +260,81 @@ function checkCollision(){
         sqr5.style.border = "none";
     }
 
-    if(sqr2.style.visibility && sqr3.style.visibility && sqr4.style.visibility && sqr5.style.visibility== "hidden"){
+    /*Collision between square 1 and 6*/
+    let leftPos5 = sqr1_posX + sqr1_width > sqr6_posX - sqr6_width;
+    let rightPos5 = sqr1_posX - sqr1_width < sqr6_posX + sqr6_width;
+    let topPos5 = sqr1_posY + sqr1_height > sqr6_posY - sqr6_height;
+    let bottomPos5 = sqr1_posY - sqr1_height < sqr6_posY + sqr6_height;
+
+    if(leftPos5 && rightPos5 && topPos5 && bottomPos5){
+	sqr6.style.visibility = "hidden";
+    }
+    else{
+        sqr6.style.border = "none";
+    }
+
+
+    /*Collision between square 1 and 7*/
+    let leftPos6 = sqr1_posX + sqr1_width > sqr7_posX - sqr7_width;
+    let rightPos6 = sqr1_posX - sqr1_width < sqr7_posX + sqr7_width;
+    let topPos6 = sqr1_posY + sqr1_height > sqr7_posY - sqr7_height;
+    let bottomPos6 = sqr1_posY - sqr1_height < sqr7_posY + sqr7_height;
+
+    if(leftPos6 && rightPos6 && topPos6 && bottomPos6){
+	sqr7.style.visibility = "hidden";
+    }
+    else{
+        sqr7.style.border = "none";
+    }
+
+
+    /*Collision between square 1 and 8*/
+    let leftPos7 = sqr1_posX + sqr1_width > sqr8_posX - sqr8_width;
+    let rightPos7 = sqr1_posX - sqr1_width < sqr8_posX + sqr8_width;
+    let topPos7 = sqr1_posY + sqr1_height > sqr8_posY - sqr8_height;
+    let bottomPos7 = sqr1_posY - sqr1_height < sqr8_posY + sqr8_height;
+
+    if(leftPos7 && rightPos7 && topPos7 && bottomPos7){
+	sqr8.style.visibility = "hidden";
+    }
+    else{
+        sqr8.style.border = "none";
+    }
+
+
+    /*Collision between square 1 and 9*/
+    let leftPos8 = sqr1_posX + sqr1_width > sqr9_posX - sqr9_width;
+    let rightPos8 = sqr1_posX - sqr1_width < sqr9_posX + sqr9_width;
+    let topPos8 = sqr1_posY + sqr1_height > sqr9_posY - sqr9_height;
+    let bottomPos8 = sqr1_posY - sqr1_height < sqr9_posY + sqr9_height;
+
+    if(leftPos8 && rightPos8 && topPos8 && bottomPos8){
+	sqr9.style.visibility = "hidden";
+    }
+    else{
+        sqr9.style.border = "none";
+    }
+
+    
+
+    /*Collision between square 1 and 10*/
+    let leftPos9 = sqr1_posX + sqr1_width > sqr10_posX - sqr10_width;
+    let rightPos9 = sqr1_posX - sqr1_width < sqr10_posX + sqr10_width;
+    let topPos9 = sqr1_posY + sqr1_height > sqr10_posY - sqr10_height;
+    let bottomPos9 = sqr1_posY - sqr1_height < sqr10_posY + sqr10_height;
+
+    if(leftPos9 && rightPos9 && topPos9 && bottomPos9){
+	sqr10.style.visibility = "hidden";
+    }
+    else{
+        sqr10.style.border = "none";
+    }
+
+    
+        
+    if(sqr2.style.visibility && sqr3.style.visibility && sqr4.style.visibility && sqr5.style.visibility && sqr6.style.visibility && sqr7.style.visibility && sqr8.style.visibility && sqr9.style.visibility && sqr10.style.visibility== "hidden"){
 	document.write("Finished. You did it in ", seconds, " seconds!")
     }	
-
 }
 
 
@@ -146,6 +344,11 @@ var sqr2 = document.getElementsByClassName('sqr2')[0];
 var sqr3 = document.getElementsByClassName('sqr3')[0];
 var sqr4 = document.getElementsByClassName('sqr4')[0];
 var sqr5 = document.getElementsByClassName('sqr5')[0];
+var sqr6 = document.getElementsByClassName('sqr6')[0];
+var sqr7 = document.getElementsByClassName('sqr7')[0];
+var sqr8 = document.getElementsByClassName('sqr8')[0];
+var sqr9 = document.getElementsByClassName('sqr9')[0];
+var sqr10 = document.getElementsByClassName('sqr10')[0];
 
 /*Get width value of squares and remove "px" from the end*/
 var sqr1_width = Number((getComputedStyle(sqr1).width).split("px")[0])/2; /*Value is string so convert it to number and divide by 2 because we need half the value */
@@ -153,6 +356,11 @@ var sqr2_width = Number((getComputedStyle(sqr2).width).split("px")[0])/2;
 var sqr3_width = Number((getComputedStyle(sqr3).width).split("px")[0])/2;
 var sqr4_width = Number((getComputedStyle(sqr4).width).split("px")[0])/2;
 var sqr5_width = Number((getComputedStyle(sqr5).width).split("px")[0])/2;
+var sqr6_width = Number((getComputedStyle(sqr6).width).split("px")[0])/2; /*Value is string so convert it to number and divide by 2 because we need half the value */
+var sqr7_width = Number((getComputedStyle(sqr7).width).split("px")[0])/2;
+var sqr8_width = Number((getComputedStyle(sqr8).width).split("px")[0])/2;
+var sqr9_width = Number((getComputedStyle(sqr9).width).split("px")[0])/2;
+var sqr10_width = Number((getComputedStyle(sqr10).width).split("px")[0])/2;
 
 /*Get height value of squares and remove "px" from the end*/
 var sqr1_height = Number((getComputedStyle(sqr1).height).split("px")[0])/2;
@@ -160,6 +368,11 @@ var sqr2_height = Number((getComputedStyle(sqr2).height).split("px")[0])/2;
 var sqr3_height = Number((getComputedStyle(sqr3).height).split("px")[0])/2;
 var sqr4_height = Number((getComputedStyle(sqr4).height).split("px")[0])/2;
 var sqr5_height = Number((getComputedStyle(sqr5).height).split("px")[0])/2;
+var sqr6_height = Number((getComputedStyle(sqr6).height).split("px")[0])/2;
+var sqr7_height = Number((getComputedStyle(sqr7).height).split("px")[0])/2;
+var sqr8_height = Number((getComputedStyle(sqr8).height).split("px")[0])/2;
+var sqr9_height = Number((getComputedStyle(sqr9).height).split("px")[0])/2;
+var sqr10_height = Number((getComputedStyle(sqr10).height).split("px")[0])/2;
 
 /*Mouse move event*/
 sqr1.addEventListener('mousemove', (e)=>{
@@ -172,5 +385,4 @@ sqr1.addEventListener('mousemove', (e)=>{
 
 
 </script>
-
 </html>
