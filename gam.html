@@ -1,0 +1,176 @@
+<html>
+<head>
+<style>
+ .sqr1{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	background-color: green;
+	font-size: 1.5em;
+	z-index: 1; /*Keeps square on top*/
+ }
+
+ .sqr2{
+	width: 80px;
+	height: 80px;
+	position: absolute;	
+	background-color: red;
+	left: 400px;
+	top: 400px;
+ }
+ .sqr3{
+	width: 80px;
+	height: 80px;
+	position: absolute;	
+	background-color: red;
+	left: 140px;
+	top: 178px;
+ }
+ .sqr4{
+	width: 80px;
+	height: 80px;
+	position: absolute;	
+	background-color: red;
+	left: 430px;
+	top: 145px;
+ }
+ .sqr5{
+	width: 80px;
+	height: 80px;
+	position: absolute;	
+	background-color: red;
+	left: 300px;
+	top: 235px;
+ }
+</style>
+</head>
+<body>
+<div id='seconds-counter'> </div>
+ <div class="sqr1"></div>
+ <div class="sqr2"></div>
+ <div class="sqr3"></div>
+ <div class="sqr4"></div>
+ <div class="sqr5"></div>
+</body>
+
+<script>
+var seconds = 0;
+var el = document.getElementById('seconds-counter');
+
+function incrementSeconds() {
+    seconds += 1;
+    el.innerText = "You have been here for " + seconds + " seconds.";
+}
+
+var cancel = setInterval(incrementSeconds, 1000);
+
+function checkCollision(){
+    let sqr1_posX = Number((getComputedStyle(sqr1).left).split("px")[0]);
+    let sqr1_posY = Number((getComputedStyle(sqr1).top).split("px")[0]);
+
+    let sqr2_posX = Number((getComputedStyle(sqr2).left).split("px")[0]) ;
+    let sqr2_posY = Number((getComputedStyle(sqr2).top).split("px")[0]);
+
+    let sqr3_posX = Number((getComputedStyle(sqr3).left).split("px")[0]) ;
+    let sqr3_posY = Number((getComputedStyle(sqr3).top).split("px")[0]);
+	
+    let sqr4_posX = Number((getComputedStyle(sqr4).left).split("px")[0]) ;
+    let sqr4_posY = Number((getComputedStyle(sqr4).top).split("px")[0]);
+
+    let sqr5_posX = Number((getComputedStyle(sqr5).left).split("px")[0]) ;
+    let sqr5_posY = Number((getComputedStyle(sqr5).top).split("px")[0]);
+
+    /*Collision between square 1 and 2*/
+    let leftPos = sqr1_posX + sqr1_width > sqr2_posX - sqr2_width;
+    let rightPos = sqr1_posX - sqr1_width < sqr2_posX + sqr2_width;
+    let topPos = sqr1_posY + sqr1_height > sqr2_posY - sqr2_height;
+    let bottomPos = sqr1_posY - sqr1_height < sqr2_posY + sqr2_height;
+
+    if(leftPos && rightPos && topPos && bottomPos){
+	sqr2.style.visibility = "hidden";
+    }
+    else{
+        sqr2.style.border = "none";
+    }
+
+    /*Collision between square 1 and 3*/
+    let leftPos2 = sqr1_posX + sqr1_width > sqr3_posX - sqr3_width;
+    let rightPos2 = sqr1_posX - sqr1_width < sqr3_posX + sqr3_width;
+    let topPos2 = sqr1_posY + sqr1_height > sqr3_posY - sqr3_height;
+    let bottomPos2 = sqr1_posY - sqr1_height < sqr3_posY + sqr3_height;
+
+    if(leftPos2 && rightPos2 && topPos2 && bottomPos2){
+	sqr3.style.visibility = "hidden";
+    }
+    else{
+        sqr1.innerHTML = "";
+        sqr3.style.border = "none";
+    }
+
+    /*Collision between square 1 and 4*/
+    let leftPos3 = sqr1_posX + sqr1_width > sqr4_posX - sqr4_width;
+    let rightPos3 = sqr1_posX - sqr1_width < sqr4_posX + sqr4_width;
+    let topPos3 = sqr1_posY + sqr1_height > sqr4_posY - sqr4_height;
+    let bottomPos3 = sqr1_posY - sqr1_height < sqr4_posY + sqr4_height;
+
+    if(leftPos3 && rightPos3 && topPos3 && bottomPos3){
+	sqr4.style.visibility = "hidden";
+    }
+    else{
+        sqr4.style.border = "none";
+    }
+
+    /*Collision between square 1 and 5*/
+    let leftPos4 = sqr1_posX + sqr1_width > sqr5_posX - sqr5_width;
+    let rightPos4 = sqr1_posX - sqr1_width < sqr5_posX + sqr5_width;
+    let topPos4 = sqr1_posY + sqr1_height > sqr5_posY - sqr5_height;
+    let bottomPos4 = sqr1_posY - sqr1_height < sqr5_posY + sqr5_height;
+
+    if(leftPos4 && rightPos4 && topPos4 && bottomPos4){
+	sqr5.style.visibility = "hidden";
+    }
+    else{
+        sqr5.style.border = "none";
+    }
+
+    if(sqr2.style.visibility && sqr3.style.visibility && sqr4.style.visibility && sqr5.style.visibility== "hidden"){
+	document.write("Finished. You did it in ", seconds, " seconds!")
+    }	
+
+}
+
+
+/*Get square divs*/
+var sqr1 = document.getElementsByClassName('sqr1')[0];
+var sqr2 = document.getElementsByClassName('sqr2')[0];
+var sqr3 = document.getElementsByClassName('sqr3')[0];
+var sqr4 = document.getElementsByClassName('sqr4')[0];
+var sqr5 = document.getElementsByClassName('sqr5')[0];
+
+/*Get width value of squares and remove "px" from the end*/
+var sqr1_width = Number((getComputedStyle(sqr1).width).split("px")[0])/2; /*Value is string so convert it to number and divide by 2 because we need half the value */
+var sqr2_width = Number((getComputedStyle(sqr2).width).split("px")[0])/2;
+var sqr3_width = Number((getComputedStyle(sqr3).width).split("px")[0])/2;
+var sqr4_width = Number((getComputedStyle(sqr4).width).split("px")[0])/2;
+var sqr5_width = Number((getComputedStyle(sqr5).width).split("px")[0])/2;
+
+/*Get height value of squares and remove "px" from the end*/
+var sqr1_height = Number((getComputedStyle(sqr1).height).split("px")[0])/2;
+var sqr2_height = Number((getComputedStyle(sqr2).height).split("px")[0])/2;
+var sqr3_height = Number((getComputedStyle(sqr3).height).split("px")[0])/2;
+var sqr4_height = Number((getComputedStyle(sqr4).height).split("px")[0])/2;
+var sqr5_height = Number((getComputedStyle(sqr5).height).split("px")[0])/2;
+
+/*Mouse move event*/
+sqr1.addEventListener('mousemove', (e)=>{
+	sqr1.style.left = (e.clientX - sqr1_width) + "px"; /*e.clientX and Y give the mouse movement's top-right and bottom-right positions*/
+	sqr1.style.top = (e.clientY - sqr1_height) + "px";
+	/*we want the cursor to show at the square’s center, so we subtract the width and height of the square using sqr1_width and sqr1_height*/
+	checkCollision();
+});
+
+
+
+</script>
+
+</html>
