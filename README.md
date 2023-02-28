@@ -25,5 +25,10 @@ Change squares to images.
 If the user moves to fast the cursor leaves the square and it stops moving. Needs to change so square goes where cursor is
 
 ## Changelog
+### Version 1.1
+Added 5 more squares
+
+Added JS code to randomly generate numbers to place target squares.
+
 ### Version 1.0
 Initial commit of game
