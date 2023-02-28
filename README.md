@@ -20,6 +20,10 @@ A mode where squares randomly spawn and dissapear and a countdown and points for
 
 Change squares to images.
 
+
+## What needs fixed
+If the user moves to fast the cursor leaves the square and it stops moving. Needs to change so square goes where cursor is
+
 ## Changelog
 ### Version 1.0
 Initial commit of game
